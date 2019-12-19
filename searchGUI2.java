@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.JOptionPane;
 
 public class searchGUI2 extends javax.swing.JFrame {
 
@@ -129,47 +130,65 @@ public class searchGUI2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws ScriptException {//GEN-FIRST:event_jButton1ActionPerformed
         String s = this.jTextField1.getText();
-        String keyword = "";
-        char key = s.charAt(0);
-        if (s.equalsIgnoreCase("calculator") || s.equalsIgnoreCase("tic tac toe") || s.equalsIgnoreCase("pinball") || s.equalsIgnoreCase("dice")) {
-            s = s.charAt(0) + "";
-        }
-        if (s.equalsIgnoreCase("money converter")) {
-            new My_Currency_Converter().setVisible(true);
-        } else if(checkForSymbols(s)){
-            ScriptEngineManager mgr = new ScriptEngineManager();
-            ScriptEngine engine = mgr.getEngineByName("JavaScript");
-            jTextArea1.setText(""+engine.eval(s));
-        } else if (s.length() > 1) {
-            keyword = s;
-            search(keyword);
-        } else if (s.length() == 1) {
-            switch (key) {
-                case 'c':
-                case 'C':
-                    Calculator c = new Calculator();
-                    break;
-                case 'd':
-                case 'D':
-                    new Dice().setVisible(true);
-                    break;
-                case 't':
-                case 'T':
-                    TicTacToe t = new TicTacToe();
-                    break;
-                case 'x':
-                case 'X':
-                    new My_Currency_Converter().setVisible(true);
-                    break;
+        if (!s.equals("")) {
 
-                case 'M':
-                case 'm':
-                    Pinball miniGame = new Pinball();
-                    break;
-                default:
-                    search(keyword);
+            String keyword = "";
+
+            char key = s.charAt(0);
+            if (s.equalsIgnoreCase("calculator") || s.equalsIgnoreCase("tic tac toe") || s.equalsIgnoreCase("dice")) {
+                s = s.charAt(0) + "";
+            }
+            if (s.equalsIgnoreCase("pinball")) {
+                new Pinball();
+            }
+
+            if (s.equalsIgnoreCase("money converter")) {
+                new My_Currency_Converter().setVisible(true);
+                
+            } else if (checkForSymbols(s)) {
+                ScriptEngineManager mgr = new ScriptEngineManager();
+                ScriptEngine engine = mgr.getEngineByName("JavaScript");
+                jTextArea1.setText("" + engine.eval(s));
+            } else if (s.length() > 1) {
+                keyword = s;
+                search(keyword);
+
+            } else if (s.length() == 1) {
+                switch (key) {
+                    case 'c':
+                    case 'C':
+                        Calculator c = new Calculator();
+                        break;
+                    case 'd':
+                    case 'D':
+                        new Dice().setVisible(true);
+                        break;
+                    case 't':
+                    case 'T':
+                        TicTacToe t = new TicTacToe();
+                        break;
+                    case 'x':
+                    case 'X':
+                        new My_Currency_Converter().setVisible(true);
+                        break;
+
+                    case 'M':
+                    case 'm':
+                        Pinball miniGame = new Pinball();
+                        break;
+                    default:
+                        search(keyword);
+
+                }
 
             }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Please enter at least one character.", "Error Message",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+
         }
 
     }
@@ -214,8 +233,8 @@ public class searchGUI2 extends javax.swing.JFrame {
 
     }
 
-    private boolean checkForSymbols(String s){
-        if(s.contains("+")||s.contains("-")||s.contains("/")||s.contains("*")||s.contains("%")||s.contains("=")){
+    private boolean checkForSymbols(String s) {
+        if (s.contains("+") || s.contains("-") || s.contains("/") || s.contains("*") || s.contains("%") || s.contains("=")) {
             return true;
         }
         return false;
