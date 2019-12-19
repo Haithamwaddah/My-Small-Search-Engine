@@ -1,5 +1,4 @@
 package mysmallsearchengine;
-
 import java.awt.EventQueue;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -13,6 +12,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton swap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -33,7 +33,8 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         "Philipine Peso",
         "Thai Baht",
         "Vietnam Dong",
-        "US Dollar"
+        "US Dollar",
+        "Singaporean Dollar"
     };
 
     double usd = 1.31386;
@@ -46,6 +47,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
     double php = 66.7717;
     double thb = 39.8857;
     double vnd = 30507.91;
+    double sgd = 1.78732;
 
     public My_Currency_Converter() {
         initComponents();
@@ -64,6 +66,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        swap = new javax.swing.JButton();
         country1 = new javax.swing.JComboBox<>();
         country2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -111,9 +114,17 @@ public class My_Currency_Converter extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        
+        swap.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        swap.setText("Swap currencies");
+        swap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swapActionPerformed(evt);
+            }
+        });
 
         country1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        country1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
+        country1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)","Singaporean Dollar(SGD)"}));
         country1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 country1ItemStateChanged(evt);
@@ -126,7 +137,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         });
 
         country2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        country2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
+        country2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)", "Singaporean Dollar(SGD)"}));
         country2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 country2ItemStateChanged(evt);
@@ -201,8 +212,12 @@ public class My_Currency_Converter extends javax.swing.JFrame {
                                                 .addGap(164, 164, 164)
                                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(108, 108, 108)
-                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(108, 108, 108)
+                                                .addComponent(swap, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                              
                                 .addGap(159, 159, Short.MAX_VALUE))
+                
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +250,8 @@ public class My_Currency_Converter extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(swap, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(92, 92, 92))
         );
 
@@ -271,6 +287,16 @@ public class My_Currency_Converter extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
     }
+    
+    private void swapActionPerformed(java.awt.event.ActionEvent evt) {
+        int a = country1.getSelectedIndex();
+        int b = country2.getSelectedIndex();
+        int temp = a;
+        a = b;
+        b = temp;
+        country1.setSelectedIndex(a);
+        country2.setSelectedIndex(b);
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         if (country1.getSelectedIndex() == 0 || country2.getSelectedIndex() == 0 || t1.getText().equals("")) {
@@ -280,6 +306,15 @@ public class My_Currency_Converter extends javax.swing.JFrame {
             );
             return;
         }
+        String[] test = t1.getText().split("\\.");
+        if(test.length > 2){
+            JOptionPane.showMessageDialog(null,
+                    "Please enter a valid amount.", "Error Message",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+        
 
         double amount = Double.parseDouble(t1.getText());
         double amountingbp = 0.0;
@@ -315,6 +350,9 @@ public class My_Currency_Converter extends javax.swing.JFrame {
             case "Timor-Leste(USD)":
                 amountingbp = amount / usd;
                 break;
+            case "Singaporean Dollar(SGD)":
+                amountingbp = amount / sgd;
+                break;
         }
 
         double amountconverted = 0.0;
@@ -348,6 +386,9 @@ public class My_Currency_Converter extends javax.swing.JFrame {
                 break;
             case "Timor-Leste(USD)":
                 amountconverted = amountingbp * usd;
+                break;
+                case "Singaporean Dollar(SGD)":
+                amountconverted = amountingbp *  sgd;
                 break;
         }
 
