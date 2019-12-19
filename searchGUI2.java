@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 
 public class searchGUI2 extends javax.swing.JFrame {
 
@@ -62,7 +65,11 @@ public class searchGUI2 extends javax.swing.JFrame {
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (ScriptException ex) {
+                    Logger.getLogger(searchGUI2.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -120,15 +127,19 @@ public class searchGUI2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws ScriptException {//GEN-FIRST:event_jButton1ActionPerformed
         String s = this.jTextField1.getText();
         String keyword = "";
         char key = s.charAt(0);
         if (s.equalsIgnoreCase("calculator") || s.equalsIgnoreCase("tic tac toe") || s.equalsIgnoreCase("pinball") || s.equalsIgnoreCase("dice")) {
             s = s.charAt(0) + "";
         }
-        if (s.equalsIgnoreCase("exchange rates")) {
+        if (s.equalsIgnoreCase("money converter")) {
             new My_Currency_Converter().setVisible(true);
+        } else if(checkForSymbols(s)){
+            ScriptEngineManager mgr = new ScriptEngineManager();
+            ScriptEngine engine = mgr.getEngineByName("JavaScript");
+            jTextArea1.setText(""+engine.eval(s));
         } else if (s.length() > 1) {
             keyword = s;
             search(keyword);
@@ -201,6 +212,13 @@ public class searchGUI2 extends javax.swing.JFrame {
             }
         }
 
+    }
+
+    private boolean checkForSymbols(String s){
+        if(s.contains("+")||s.contains("-")||s.contains("/")||s.contains("*")||s.contains("%")||s.contains("=")){
+            return true;
+        }
+        return false;
     }
 
 }
