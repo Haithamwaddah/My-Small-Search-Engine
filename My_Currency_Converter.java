@@ -6,6 +6,22 @@ import javax.swing.UIManager;
 
 public class My_Currency_Converter extends javax.swing.JFrame {
 
+    private javax.swing.JComboBox<String> country1;
+    private javax.swing.JComboBox<String> country2;
+    private javax.swing.JLabel currencyunits1;
+    private javax.swing.JLabel currencyunits2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField t1;
+    private javax.swing.JTextField t2;
+
     String[] currencyUnits = {
         "Units",
         "Brunei Dollar",
@@ -15,7 +31,6 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         "Malaysia Ringgit",
         "Myammar Kyat",
         "Philipine Peso",
-        "Singapore Dollar",
         "Thai Baht",
         "Vietnam Dong",
         "US Dollar"
@@ -29,19 +44,14 @@ public class My_Currency_Converter extends javax.swing.JFrame {
     double myr = 5.46598;
     double mmk = 1973.64;
     double php = 66.7717;
-    double sgd = 1.78732;
     double thb = 39.8857;
     double vnd = 30507.91;
 
-    /**
-     * Creates new form My_Currency_Converter
-     */
     public My_Currency_Converter() {
         initComponents();
-        
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -103,7 +113,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         });
 
         country1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        country1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Singapore Dollar(SGD)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
+        country1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
         country1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 country1ItemStateChanged(evt);
@@ -116,7 +126,7 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         });
 
         country2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        country2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Singapore Dollar(SGD)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
+        country2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Choose One...", "Brunei Dollar(BND)", "Cambodia Riel(KHR)", "Indonesia Rupiah(IDR)", "Laos Kip(LAK)", "Malaysia Ringgit(MYR)", "Myammar Kyat(MMK)", "Philippine Peso(PHP)", "Thai Baht(THB)", "Vietnam Dong(VND)", "Timor-Leste(USD)"}));
         country2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 country2ItemStateChanged(evt);
@@ -296,9 +306,6 @@ public class My_Currency_Converter extends javax.swing.JFrame {
             case "Philippine Peso(PHP)":
                 amountingbp = amount / php;
                 break;
-            case "Singapore Dollar(SGD))":
-                amountingbp = amount / sgd;
-                break;
             case "Thai Baht(THB)":
                 amountingbp = amount / thb;
                 break;
@@ -333,9 +340,6 @@ public class My_Currency_Converter extends javax.swing.JFrame {
             case "Philippine Peso(PHP)":
                 amountconverted = amountingbp * php;
                 break;
-            case "Singapore Dollar(SGD)":
-                amountconverted = amountingbp * sgd;
-                break;
             case "Thai Baht(THB)":
                 amountconverted = amountingbp * thb;
                 break;
@@ -364,22 +368,5 @@ public class My_Currency_Converter extends javax.swing.JFrame {
         t1.setText(null);
         t2.setText(null);
     }
-
-
-    private javax.swing.JComboBox<String> country1;
-    private javax.swing.JComboBox<String> country2;
-    private javax.swing.JLabel currencyunits1;
-    private javax.swing.JLabel currencyunits2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField t1;
-    private javax.swing.JTextField t2;
 
 }
